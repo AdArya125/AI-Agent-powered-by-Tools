@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 LLMs Based AI Agent
 
-## Getting Started
+An intelligent web-based AI assistant powered by Claude 3.5 Haiku and orchestrated with LangChain, LangGraph, and IBM Watsonx Flows. This agent dynamically invokes external tools like Wikipedia, YouTube Transcript, Currency Conversion, and REST/GraphQL APIs to provide real-time, context-aware responses.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend**: Next.js, Tailwind CSS, Shadcn
+- **Backend**: Convex (serverless DB), Clerk (authentication)
+- **LLM Engine**: Claude 3.5 Haiku (20241022)
+- **Tool Orchestration**: LangChain, LangGraph, IBM Watsonx Flows
+- **Integrated Tools**:
+  - Wikipedia
+  - YouTube Transcript Retriever
+  - Google Books
+  - Currency Exchange
+  - Math Engine
+  - Dummy REST APIs (products, customers, comments)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📸 Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 🔍 Intelligent Tool Selection using Claude 3.5 + LangGraph  
+- 💬 Chat-based user interface  
+- 🔐 Secure authentication with Clerk  
+- 🌐 Real-time API integration (REST & GraphQL)  
+- 💾 Serverless database using Convex  
+- 🧩 Modular and scalable architecture  
+
+
+
+---
+
+
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+Make sure you have:
+
+- Node.js ≥ 18.x
+- npm or yarn
+- Git
+- IBM Watson xFlows Engine
+- Convex CLI (`npm install -g convex`)
+- A Clerk project (for authentication)
+- API keys for YouTube, currency exchange, etc.
+
+---
+
+### 📦 Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/AdArya125/AI-Agent-powered-by-Tools
+   cd AI-Agent-powered-by-Tools
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Configure Environment Variables**
+
+   Create a `.env.local` file:
+   ```env
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY= your_clerk_publishable_key
+   CLERK_SECRET_KEY= your_clerk_secret_key
+   
+   # Deployment used by `npx convex dev`
+   # From your Convex Project Dashboard
+   CONVEX_DEPLOYMENT= your_convex_username
+   NEXT_PUBLIC_CONVEX_URL= your_public_convex_url
+
+   ANTHROPIC_API_KEY= your_anthropic_API_key
+
+   # wxflows whoami --apikey
+   # update this after adding and deplowing the tools to wxflows
+   WXFLOWS_APIKEY= your_wxflows_API_key
+   WXFLOWS_ENDPOINT= your_wxflows_endpoint
+  
+   ```
+
+4. **Set up Convex**
+   ```bash
+   npx convex dev
+   ```
+
+5. **Run the Development Server**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🧪 Usage
+
+- Visit [http://localhost:3000](http://localhost:3000)
+- Register/login using Clerk
+- Ask queries like:
+  - “Get the transcript of this YouTube video: [URL]”
+  - “What’s the exchange rate between USD and EUR?”
+  - “Tell me about the history of AI.”
+
+The AI agent will:
+- Parse the query using Claude
+- Choose and invoke the appropriate tool
+- Return a polished, context-aware response
+
+---
+
+## 🔐 Authentication
+
+- Powered by [Clerk](https://clerk.dev)
+- Supports secure sign-up/login
+- Session and role-based management built-in
+
+---
+
+## 🧩 Tool Integration Architecture
+
+- LangChain wraps each tool as a callable component
+- LangGraph manages stateful tool workflows
+- IBM Watsonx Flows enables complex automations
+
+---
+
+## 🧠 Future Scope
+
+- Add custom ML models as new tools  
+- Integrate secure private RAG pipelines  
+- Enable biometric login & deeper GDPR compliance  
+- Auto-scale via cloud deployment (Vercel/AWS/etc.)  
+
+
+
+---
+
+
+
+## 🙌 Acknowledgments
+
+- Claude by Anthropic  
+- LangChain, LangGraph, Clerk, Convex  
+- IBM Watsonx Flows
+
+
+---
+
+
+
+## 📬 Contact
+
+**Aditya Arya**  
+Email: adarya125@gmail.com  
+GitHub: [@AdArya125](https://github.com/AdArya125)
+
