@@ -1,0 +1,56 @@
+type Dimensions {
+  depth: Float
+  height: Float
+  width: Float
+}
+
+type Meta {
+  barcode: Float
+  createdAt: DateTime
+  qrCode: String
+  updatedAt: DateTime
+}
+
+type ProductsEntry {
+  availabilityStatus: String
+  brand: String
+  category: String
+  description: String
+  dimensions: Dimensions
+  discountPercentage: Float
+  id: Int
+  images: [String]
+  meta: Meta
+  minimumOrderQuantity: Int
+  price: Float
+  rating: Float
+  returnPolicy: String
+  reviews: [ReviewsEntry]
+  shippingInformation: String
+  sku: String
+  stock: Int
+  tags: [String]
+  thumbnail: String
+  title: String
+  warrantyInformation: String
+  weight: Int
+}
+
+type ReviewsEntry {
+  comment: String
+  date: DateTime
+  rating: Int
+  reviewerEmail: String
+  reviewerName: String
+}
+
+type RootProducts {
+  limit: Int
+  products: [ProductsEntry]
+  skip: Int
+  total: Int
+}
+
+type Query {
+  productsQuery: RootProducts @rest(endpoint: "https://dummyjson.com/products")
+}
